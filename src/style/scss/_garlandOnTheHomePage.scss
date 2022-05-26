@@ -1,0 +1,89 @@
+@import "colors";
+
+.garland {
+    display: flex;
+    position: absolute;
+    top: 26px;
+
+    .bulb {
+        position: relative;
+        width: 35px;
+        height: 35px;
+        display: inline-block;
+        margin: 10px;
+        border-radius: 100%;
+    }
+
+    $colors: ($purple, $blue, $green, $orange, $red);
+    @for $i from 1 through length($colors) {
+        $variable: nth($colors, $i); 
+        
+        .bulb:nth-child(5n + #{$i}) {
+            background-color: #{$variable};
+            opacity: 1;
+            box-shadow: 1px 1px 15px #{$variable}, -1px -1px 15px  #{$variable};
+            animation: garland-glow-#{$variable} 1s infinite;
+        }
+    }
+}
+
+.garland {
+    @for $i from 1 to 6 {
+        .bulb:nth-child(9n + #{$i}) {
+            top: #{(20) * ($i - 1)}px;
+        }
+    }
+    
+    @for $i from 6 to 10 {
+        .bulb:nth-child(9n + #{$i}) {
+            top: #{(20) * (10 - $i)}px;
+        }
+    }
+}
+
+@each $color in $purple, $green, $red {
+    @keyframes garland-glow-#{$color} {
+        0% {box-shadow: none; opacity: 0.3;}
+        50% {opacity: 1; box-shadow: 1px 1px 15px #{$color}, -1px -1px 15px #{$color};}
+        100% {box-shadow: none; opacity: 0.3;}
+    }
+}
+
+@each $color in $blue, $orange {
+    @keyframes garland-glow-#{$color} {
+        0% {opacity: 1; box-shadow: 1px 1px 15px #{$color}, -1px -1px 15px #{$color};}
+        50% {box-shadow: none; opacity: 0.3;}
+        100% {opacity: 1; box-shadow: 1px 1px 15px #{$color}, -1px -1px 15px #{$color};}
+    }
+}
+
+@media (max-width: 1600px) {
+    .garland .bulb {
+        width: 30px;
+        height: 30px;
+    }
+}
+
+@media (max-width: 1450px) {
+    .garland .bulb {
+        width: 25px;
+        height: 25px;
+        margin: 8px;
+    }
+}
+
+@media (max-width: 1200px) {
+    .garland .bulb {
+        width: 21px;
+        height: 21px;
+        margin: 6px;
+    }
+}
+
+@media (max-width: 900px) {
+    .garland .bulb {
+        width: 18px;
+        height: 18px;
+        margin: 4px;
+    }
+}

@@ -1,0 +1,87 @@
+.garland-wrap {
+    display: contents;
+    pointer-events: none;
+}
+
+.layer {
+    position: absolute;
+    width: 80%;
+    display: flex;
+    justify-content: center;
+    z-index: 20;
+}
+
+@for $i from 1 to 6 {
+    .layer-#{$i} {
+        top: calc((100% / 5) *( 1 + 0.7 * #{$i - 1}));
+    }
+}
+
+.garland-ball {
+    position: relative;
+    width: 10px;
+    height: 10px;
+    margin: 3px;
+    border-radius: 50%;
+    opacity: 1;
+    animation-timing-function: ease-in-out;
+}
+
+@for $i from 0 through 1 {
+    .garland-ball:nth-child(2n + #{$i}) {
+        animation: glow-#{$i + 1} 1.2s infinite;
+    }
+}
+
+@for $i from 2 through 4 {
+    .garland-ball:nth-child(5n + #{$i}) {
+        animation-delay: #{(i + 1) / 10}s;
+    }
+}
+
+@keyframes glow-1 {
+    0% {
+        opacity: 0.25;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.2);
+    }
+    100% {
+        opacity: 0.25;
+        transform: scale(1);
+    }
+}
+
+@keyframes glow-2 {
+    0% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.25;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@media (max-width: 1260px) {
+    .garland-ball {
+        margin: 2px;
+    }
+}
+
+@media (max-width: 1000px) {
+    .garland-ball {
+        width: 8px;
+        height: 8px;
+        margin: 2px;
+    }
+}
+
+@media (max-width: 900px) {
+    .garland-ball {
+        margin: 1px;
+    }
+}

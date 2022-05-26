@@ -1,0 +1,96 @@
+@import "colors";
+
+.main__page {
+    max-width: 1600px;
+    height: 95vh;
+    margin: 0 auto;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    overflow: hidden;
+
+    .background {
+        position: absolute;
+        bottom: 0;
+        width: 100vw;
+        height: 650px;
+        background: url(../../assets/santa.webp) left 20px bottom 30px no-repeat, url(../../assets/christmas-tree.webp) left 200px bottom 30px no-repeat;
+        background-size: 350px 400px, 450px 530px;
+    }
+
+    .name-game {
+        width: 600px;
+        height: 250px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 52px;
+        line-height: 100px;
+        background-color: $secondary_color;
+        backdrop-filter: blur(6px);
+        border: 2px solid $primary_color;
+        border-radius: 25px;
+    }
+
+    .start-game {
+        width: 300px;
+        height: 70px;
+        margin-top: 100px;
+        font-size: 36px;
+        background-color: $secondary_color;
+        backdrop-filter: blur(6px);
+        border: 4px solid $primary_color;
+        border-radius: 50px;
+        color: $white;
+        transition: 0.5s;
+
+        &:hover,
+        &:focus {
+            animation: pulse 1s;
+            box-shadow: 0 0 0 2em rgba(255, 255, 255, 0);
+        }
+    }
+}
+
+.hide {
+    display: none;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 adjust-hue(rgba(255, 255, 255, 0.4), 45deg);
+    }
+}
+
+@keyframes spinAround {
+    from {
+        transform: rotate(0deg)
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@media (max-width: 1540px) {
+    .main__page .background {
+        background: url(../../assets/santa.webp) left 20px bottom 30px no-repeat, url(../../assets/christmas-tree.webp) left 130px bottom 30px no-repeat;
+        background-size: 300px 350px, 400px 470px;
+    }
+}
+
+@media (max-width: 1250px) {
+    .main__page .background {
+        background: url(../../assets/santa.webp) left 20px bottom 30px no-repeat, url(../../assets/christmas-tree.webp) left 130px bottom 30px no-repeat;
+        background-size: 250px 280px, 250px 380px;
+    }
+}
+
+@media (max-width: 950px) {
+    .main__page .background {
+        background: url(../../assets/santa.webp) left 20px bottom 30px no-repeat, url(../../assets/christmas-tree.webp) left 130px bottom 30px no-repeat;
+        background-size: 200px 250px, 200px 350px;
+    }
+}

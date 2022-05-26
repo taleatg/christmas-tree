@@ -1,0 +1,55 @@
+@import "colors";
+
+.container{
+    position: relative;
+    pointer-events: none;
+    width: 100%;
+  }
+
+.container input[type="range"]{
+  height: 2em;
+  width: 100%;
+  display: block;
+}
+
+input[type="range"] {
+  -webkit-appearance: none !important;
+  background: transparent;
+  margin-top: -19px;
+  outline: none;
+}
+
+
+.container input[type="range"]:last-child{
+  margin-top: -2em;
+}
+
+.container input[type="range"]:first-child{
+  margin-left: -2px;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  pointer-events: all;
+  -webkit-appearance: none !important;
+  background: $white;
+  height: 25px;
+  width: 25px;
+  border-radius: 50%;
+}
+
+input[type="range"]:hover {
+    cursor: e-resize;
+}
+
+.range-wrap {
+  width: 65%;
+  position: relative;
+  margin-top: 10px;
+}
+
+.progress-line {
+  background: $primary_color;
+  width: 100%;
+  height: 10px;
+  border-radius: 25px;
+}

@@ -1,0 +1,10 @@
+.idea
+
+# dependencies
+/node_modules
+
+# production
+/build
+
+.css
+.css.map

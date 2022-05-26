@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Бабушкины ёлочные игрушки</title>
+    <link rel="stylesheet" href="./style/css/style.css">
+    <link href="./assets/favicon.ico" rel="shortcut icon"/>
+</head>
+<body>
+    <header class="header">
+        <div class="header-wrap">
+            <nav class="nav">
+                <a href="#" class="icon-main-page active-page logo"></a>
+                <a href="#" class="page-toys">игрушки</a>
+                <a href="#" class="page-christmas-tree">ёлка</a>
+            </nav>
+            <div class="search-wrap">
+                <div class="input-search-wrap">
+                    <input type="text" class="search" placeholder="Поиск" autocomplete="off" autofocus>
+                </div>
+                <div class="ball">
+                    <span class="total-favorite">0</span>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main class="main">
+        <div class="main__page">
+            <div class="garland"></div>
+            <div class="name-game">Новогодняя игра <br> «Наряди ёлку»</div>
+            <div class="background"></div>
+            <button class="start-game">Начать</button>
+        </div>
+
+        <div class="main__page-toys">
+            <div class="filter-and-sort">
+                <div class="value-filters controls">
+                    <div class="title">фильтры по назначению</div>
+                    <div class="shape">Форма:
+                        <button class="shape-ball icon"></button>
+                        <button class="shape-bell icon"></button>
+                        <button class="shape-cone icon"></button>
+                        <button class="shape-snowflake icon"></button>
+                        <button class="shape-toy icon"></button>
+                    </div>
+                    <div class="color-wrap">Цвет:
+                        <input type="checkbox" id="color-white" class="input-color input-white">
+                        <label for="color-white" class="color white"></label>
+                        <input type="checkbox" id="color-yellow" class="input-color input-yellow">
+                        <label for="color-yellow" class="color yellow"></label>
+                        <input type="checkbox" id="color-red" class="input-color input-red">
+                        <label for="color-red" class="color red"></label>
+                        <input type="checkbox" id="color-blue" class="input-color input-blue">
+                        <label for="color-blue" class="color blue"></label>
+                        <input type="checkbox" id="color-green" class="input-color input-green">
+                        <label for="color-green" class="color green"></label>
+                    </div>
+                    <div class="size">Размер:
+                        <button class="large icon"></button>
+                        <button class="medium icon"></button>
+                        <button class="small icon"></button>
+                    </div>
+                    <div class="favorite">Только любимые:
+                        <div class="favorite-check">
+                            <input type="checkbox" id="checkbox-for-favorite" class="favorite-input">
+                            <label for="checkbox-for-favorite"></label>
+                        </div>
+                    </div>
+                </div>
+                <div class="range-filters controls">
+                    <div class="title">фильтры по диапозону</div>
+                    <div class="amount">Количество экземпляров:
+                        <div class="amount-wrap">
+                            <output type="number" class="start-amount output">1</output>
+                            <div class="range-wrap">
+                                <div class="progress-line progress-line-amount"></div>
+                                <div class="container">
+                                    <input type="range" min="1" step="1" max="12" value="1" class="input-range-amount">
+                                    <input type="range" min="1" step="1" max="12" value="12" class="input-range-amount">
+                                </div>
+                            </div>
+                            <output type="number" class="end-amount output">12</output>
+                        </div>
+                    </div>
+                    <div class="year">Год приобретения:
+                        <div class="year-wrap">
+                            <output type="number" class="start-year output">1940</output>
+                            <div class="range-wrap">
+                                <div class="progress-line progress-line-year"></div>
+                                <div class="container">
+                                    <input type="range" min="1940" step="10" max="2020" value="1940" class="input-range-year">
+                                    <input type="range" min="1940" step="10" max="2020" value="2020" class="input-range-year">
+                                </div>
+                            </div>
+                            <output type="number" class="end-year output">2020</output>
+                        </div>
+                    </div>
+                </div>
+                <div class="sort controls">
+                    <div class="title">сортировка</div>
+                    <select class="sort-select">
+                        <option value="sort-name">По названию от «А» до «Я»</option>
+                        <option value="sort-name-max">По названию от «А» до «Я»</option>
+                        <option value="sort-name-min">По названию от «Я» до «А»</option>
+                        <option value="sort-count-max">По году приобретения по возрастанию</option>
+                        <option value="sort-count-min">По году приобретения по убыванию</option>
+                    </select>
+                    <div class="button-reset">
+                        <button class="reset">Сброс фильтров</button>
+                        <button class="local-reset">Сброс настроек</button>
+                    </div>
+                </div>
+            </div>
+            <div class="message-after-filtering message-hide">Извините, совпадений не обнаружено</div>
+            <div class="toy-card-wrap"></div>
+        </div>
+
+        <div class="main__page-tree">
+            <div class="settings">
+                <div class="sound-and-snow">
+                    <div class="button-wrap">
+                        <button class="sound"></button>
+                        <button class="snow"></button>
+                    </div>
+                    <button class="reset-settings">Сброс настроек</button>
+                </div>
+                <div class="christmas-tree">
+                    <div class="title">Выберите ёлку</div>
+                    <div class="tree-cards-wrap"></div>
+                </div>
+                <div class="background">
+                    <div class="title">Выберите фон</div>
+                    <div class="bg-cards-wrap"></div>
+                </div>
+                <div class="garland-for-tree">
+                    <div class="title">Гирлянда</div>
+                    <div class="garland-button-wrap">
+                        <label class="switch">
+                            <input type="checkbox" class="on-or-off-garland">
+                            <span class="slider round"></span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="tree-wrap">
+                <div class="garland-wrap"></div>
+                <map name="tree-map">
+                    <area shape="poly" coords="235,0,220,12,226,38,203,52,210,76,184,108,188,140,166,142,175,158,156,171,159,184,149,217,158,222,143,234,144,250,124,250,135,272,122,289,126,299,112,310,119,317,116,328,108,344,109,359,82,376,94,389,77,401,73,423,80,434,65,451,61,460,59,473,47,490,59,499,40,520,36,531,48,546,36,554,21,565,30,581,3,608,22,624,24,637,22,646,47,650,42,661,52,661,56,674,73,675,91,677,108,677,140,670,130,693,147,708,173,691,188,696,211,681,214,698,232,700,267,676,275,696,318,713,342,689,365,679,377,675,390,660,404,672,430,673,479,659,482,642,466,617,487,607,490,590,488,568,478,548,469,519,451,505,464,487,454,464,454,449,435,443,443,407,438,415,416,397,426,380,418,363,410,340,386,331,400,315,385,306,381,290,381,246,359,233,344,221,354,200,334,181,342,157,325,119,306,103,307,89,290,78,299,54,279,38,259,31,257,10">
+                </map>
+                <img src="./assets/tree/1.webp" class="tree" alt="tree" usemap="#tree-map">
+            </div>
+            <div class="toy-slots">
+                <div class="toys-slot-wrap">
+                    <div class="title">Игрушки</div>
+                    <div class="toys-slot"></div>
+                </div>
+                <button class="reset-toys">Вернуть игрушки в слоты</button>
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-wrap">
+            <div class="year">© 2021</div>
+            <div class="link">
+                <div class="github">
+                    <a class="site-link" href="https://github.com/taleatg" target="_blank">
+                        <div class="github-link">Tatsiana Dashuk</div>
+                    </a>
+                </div>
+                <div class="rs-school">
+                    <a class="site-link" href="https://rs.school/js/" target="_blank">
+                        <div class="rss-link"></div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,64 @@
+@import "colors";
+
+.footer {
+    position: fixed;
+    display: block;
+    width: 100vw;
+    bottom: 0;
+    padding: 0 15px;
+    background: rgba(0, 0, 0, 1);
+    color: $white;
+    font-size: 18px;
+    z-index: 5;
+}
+
+.footer-wrap {
+    max-width: 1600px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    .link {
+        display: flex;
+        align-items: center;
+
+        .github {
+            background: url("../../assets/svg/github.svg") no-repeat;
+            background-size: 30px 30px;
+            height: 30px;
+            margin: 0 50px;
+            padding-left: 40px;
+            transition: 0.5s;
+
+            a {
+                text-decoration: none;
+                color: $white;
+            }
+
+            .github-link {
+               margin-top: 3px;
+               font-size: 26px;
+               text-transform: none;
+               letter-spacing: 2px;
+               transition: 0.5s;
+            }
+
+            &:hover {
+                transform: scale(1.08);
+            }
+        }
+
+        .rss-link {
+            background: url("../../assets/svg/rss.svg") no-repeat;
+            background-size: 90px 30px;
+            width: 90px;
+            height: 30px;
+            transition: 0.5s;
+
+            &:hover {
+                transform: scale(1.08);
+            }
+        }
+    }
+}

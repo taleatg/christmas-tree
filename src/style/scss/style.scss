@@ -1,0 +1,62 @@
+@import "colors";
+
+@font-face {
+  font-family: "Balsamiq Sans";
+  src: url(../../assets/BalsamiqSans-Regular.ttf);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  overflow-x: hidden;
+  user-select: none;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: $white;
+  text-transform: uppercase;
+  background: url("../../assets/bg.webp") center no-repeat fixed;
+  background-size: cover;
+  font-family: "Balsamiq Sans";
+  letter-spacing: 3px;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 32px;
+  width: 100vw;
+  height: auto;
+  min-height: 95vh;
+  backdrop-filter: blur(8px);
+}
+
+::-webkit-scrollbar {
+  width: 2px;
+  height: 2px;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 100%;
+  box-shadow: inset 1px 1px 10px $primary_color;
+}
+
+@import "_header";
+@import "_garlandOnTheHomePage";
+@import "_garlandForTree";
+@import "_footer";
+@import "_pageToys";
+@import "_inputDoubleRange";
+@import "_pageTree";
+@import "_mainPage";

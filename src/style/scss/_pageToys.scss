@@ -1,0 +1,556 @@
+@import "colors";
+
+.main__page-toys {
+  position: relative;
+  top: 70px;
+  max-width: 1600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  text-transform: uppercase;
+  margin-bottom: 100px;
+
+  .filter-and-sort {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 1600px;
+    font-size: 22px;
+    line-height: 40px;
+    padding: 0 15px;
+
+    .controls {
+      padding: 15px 15px 5px 15px;
+      margin: 0 15px;
+      background: $secondary_color;
+      border-radius: 15px;
+    }
+
+    .controls:nth-child(1) {
+      width: calc((100vw - 110px) / 3);
+      margin-left: 0;
+    }
+
+    .controls:nth-child(2) {
+      width: calc((100vw + 110px) / 3);
+    }
+
+    .controls:nth-child(3) {
+      width: calc((100vw - 350px) / 3);
+      margin-right: 0;
+    }
+  }
+}
+
+.shape, .color-wrap, .size, .favorite {
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  margin: 5px 0;
+}
+
+.shape {
+  margin: 15px 0 10px 0;
+
+  button {
+    margin: 5px;
+    width: 40px;
+    height: 40px;
+    border: 0;
+    outline: 0;
+
+    &:nth-child(1) {      
+      margin-left: 25px;
+    }
+
+    $shape: ('ball', 'bell', 'cone', 'snowflake', 'toy');
+    @for $i from 1 through 5 {
+      $variable: nth($shape, $i); 
+
+      &:nth-child(#{$i}) {
+        background: url("../../assets/svg/#{$variable}.svg") no-repeat;
+        background-size: contain;
+      }
+    }
+  }
+}
+
+.color-wrap {
+
+  .input-color {
+    display: none;
+  }
+
+  .color {
+    display: flex;
+    width: 30px;
+    height: 30px;
+    backdrop-filter: blur(6px);
+    margin-left: 25px;
+    border-radius: 5px;
+    transition: 0.5s;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  .white {
+    margin-left: 25px;
+  }
+
+  @each $color in $white, $yellow, $red, $blue, $green {
+    .#{$color} {
+      background-color: #{$color};
+    }
+  }
+
+  .input-color:checked + label::after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 5px;
+    left: 10px;
+    width: 6px;
+    height: 10px;
+    border: solid $gold;
+    border-width: 0 4px 4px 0;
+    transform: rotate(45deg);
+  }
+}
+
+.size {
+
+  button {
+    margin: 6px;
+    border: 0;
+    outline: 0;
+    border-radius: 10px;
+    background: url("../../assets/svg/ball.svg") center no-repeat;
+    background-size: contain;
+
+    &:nth-child(1) {      
+      margin-left: 25px;
+    }
+
+    $size: ('40px', '32px', '24px');
+    @for $i from 1 through 3 {
+      $variable: nth($size, $i); 
+      
+      &:nth-child(#{$i}) {
+        width: #{$variable};
+        height: #{$variable};
+      }
+    }
+  }
+}
+
+.favorite {
+  margin-bottom: 0;
+
+  .favorite-check {
+    margin: 0;
+    display: flex;
+    align-items: center;
+
+    .favorite-input {
+      display: none;
+    }
+
+    label {
+      display: flex;
+      width: 30px;
+      height: 30px;
+      backdrop-filter: blur(6px);
+      border: 1px solid $primary_color;
+      margin-left: 25px;
+      border-radius: 5px;
+      transition: 0.5s;
+
+      &:hover {
+        background-color: $primary_color;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .favorite-input:checked + label {
+    background-color: $primary_color;
+  }
+
+  .favorite-input:checked + label::after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 5px;
+    left: 9px;
+    width: 6px;
+    height: 10px;
+    border: solid $gold;
+    border-width: 0 4px 4px 0;
+    transform: rotate(45deg);
+  }
+}
+
+.active {
+  filter: invert(9%) sepia(63%) saturate(461%) hue-rotate(322deg) brightness(83%) contrast(88%);
+}
+
+button {
+  transition: 0.5s;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.amount, .year {
+  margin: 15px 0 10px 0;
+  font-size: 18px;
+}
+
+.amount-wrap, .year-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.output {
+  width: 100px;
+  height: 40px;
+  background-color: $secondary_color;
+  border: 1px solid $primary_color;
+  border-radius: 25px;
+  font-size: 20px;
+  text-align: center;
+  margin: 0 10px;
+}
+
+.input-range:hover {
+  cursor: e-resize;
+}
+
+.sort {
+  display: flex;
+  flex-direction: column;
+
+  option:first-child {
+    display: none;
+  }
+
+  .sort-select {
+    max-width: 100vw;
+    height: 40px;
+    margin: 15px 0 105px 0;
+    padding: 0 15px;
+    border: 1px solid $primary_color;
+    border-radius: 25px;
+    background: url(../../assets/svg/arrow-down.svg) $secondary_color no-repeat;
+    background-position: calc(100% - 5px) center;
+    font-family: "Balsamiq Sans";
+    font-size: 18px;
+    letter-spacing: 2px;
+    color: $white;
+    outline: none;
+    appearance: none;
+
+    option {
+      color: inherit;
+      background-color: $secondary_color;
+      border: none;
+    }
+  }
+
+  .button-reset {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .reset, .local-reset {
+    display: flex;
+    align-items: center;
+    align-self: center;
+    max-width: 220px;
+    height: 40px;
+    padding: 0 15px;
+    border: 1px solid $primary_color;
+    border-radius: 25px;
+    background: url(../../assets/svg/arrow-down.svg) $secondary_color no-repeat;
+    background-position: 325px center;
+    font-family: "Balsamiq Sans";
+    font-size: 16px;
+    letter-spacing: 2px;
+    color: $white;
+    transition: 0.5s;
+  }
+
+  .reset:hover, .local-reset:hover {
+    transform: scale(1.05);
+    cursor: pointer;
+  }
+
+  .reset:active, .local-reset:active {
+    transform: scale(0.9);
+  }
+}
+
+.toy-card-wrap {
+  margin: -30px 0 100px 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 25px;
+  justify-content: flex-start;
+  padding: 0 15px;
+
+  .card {
+    position: relative;
+    top: 200px;
+    display: flex;
+    flex-direction: column;
+    width: 294px;
+    height: 280px;
+    padding: 15px;
+    border-radius: 10px;
+    border: 1px solid $primary_color;
+    background-color: $secondary_color;
+    backdrop-filter: blur(6px);
+    opacity: 0;
+    transform: scale(0);
+    transition: 0.5s;
+    cursor: pointer;
+
+    .num-card {
+      display: none;
+    }
+
+    .title-card {
+      font-size: 16px;
+      letter-spacing: 1px;
+    }
+
+    .info-about-toy {
+      display: flex;
+      margin-top: 25px;
+      width: 100%;
+      height: 100%;
+
+      .picture-toys {
+        width: 75px;
+        height: 115px;
+        margin-right: 10px;
+        background-size: cover;
+      }
+
+      .card-info {
+        font-size: 14px;
+        letter-spacing: 0;
+
+        .text-info {
+          display: flex;
+          margin: 15px;
+
+          p {
+            margin-left: 10px;
+          }
+        }
+      }
+    }
+
+    .sticker {
+      position: absolute;
+      top: 210px;
+      width: 80px;
+      height: 40px;
+      background: $primary_color;
+      left: -8px;
+    }
+
+    .sticker:before {
+      border-bottom: 8px solid $secondary_color;
+      border-left: 8px solid transparent;
+      top: -8px;
+    }
+
+    .sticker:after {
+      border-top: 20px solid transparent;
+      border-bottom: 20px solid transparent;
+      border-left: 15px solid $primary_color;
+      right: -15px;
+    }
+
+    .sticker::before, .sticker::after {
+        content: "";
+        position: absolute;
+        height: 0;
+        width: 0;
+    }
+
+    .sticker-favorite {
+      background: $gold;
+    }
+
+    .sticker-favorite:after {
+      border-left: 15px solid $gold;
+    }
+  }
+
+  .show-card {
+    left: 0;
+    top: 0;
+    transform: scale(1);
+    opacity: 1;
+    transition: 0.5s;
+  }
+}
+
+.message-after-filtering {
+  position: relative;
+  top: 50px;
+  opacity: 1;
+  visibility: visible;
+  font-size: 28px;
+  color: #fff;
+  padding-top: 100px;
+  text-align: center;
+  width: 100%;
+  height: 100px;
+  transition: 0.5s;
+}
+
+.message-hide {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.message {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(8px);
+    transition: 2s;
+    z-index: 4;
+}
+
+.text-message {
+  position: absolute;
+  width: 350px;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  border-radius: 25px;
+  background: rgba(0, 0, 0, 0.7);
+  font-size: 26px;
+  transition: 2s;
+}
+
+@media (max-width: 1600px) {
+  .toy-card-wrap {
+    .card {
+      width: calc((100vw / 4) - 27px);
+    }
+  }
+
+  .sort .sort-select {
+    font-size: 14px;
+  }
+
+
+  .sort .button-reset {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    .reset {
+      margin: -50px 0 20px 0;
+    }
+  }
+}
+
+
+@media (max-width: 1440px) {
+  .shape, .color-wrap, .size, .favorite, .amount, .year {
+    font-size: 14px;
+  }
+
+  .title {
+    font-size: 18px;
+  }
+
+  .color-wrap .color {
+    margin-left: 10px;
+  }
+
+  .color-wrap .color:nth-child(2) {
+    margin-left: 25px;
+  }
+
+  .sort .sort-select {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 1270px) {
+  .toy-card-wrap {
+    .card {
+      width: calc((100vw / 3) - 27px);
+    }
+  }
+
+  .title {
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 1100px) {
+  .main__page-toys {
+    .filter-and-sort {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+
+      .controls:nth-child(1), .controls:nth-child(2) {
+        width: calc((100vw / 2) - 45px);
+        margin: 15px;
+      }
+
+      .controls:nth-child(3) {
+        width: 60vw;
+        margin: 10px;
+      }
+    }
+  }
+
+  .sort .sort-select {
+    font-size: 18px;
+  }
+
+  .sort .button-reset {
+    justify-content: space-between;
+    margin: 10px;
+
+    .reset, .local-reset {
+      margin: 0;
+      max-width: 200px;
+    }
+  }
+}
+
+@media (max-width: 945px) {
+  .toy-card-wrap {
+    .card {
+      width: calc((100vw / 2) - 28px);
+
+      .info-about-toy .picture-toys {
+        width: 95px;
+        height: 125px;
+        margin-right: 25px;
+      }
+    }
+  }
+}
